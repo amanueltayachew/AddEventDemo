@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JS Exam[4]</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <style>
+      body {
+        font-size: 15px;
+      }
+      .container {
+        width: 350px;
+        margin: 10px auto;
+      }
+      .eventCollectionDiv {
+        height: 300px;
+        overflow: auto;
+      }
+      .input {
+        width: 95%;
+      }
+      .halfInput {
+        width: 47%;
+      }
+      .header {
+        background-color: #fc5c65;
+        width: 95%;
+        padding: 10px;
+      }
+      .title {
+        width: 95%;
+        padding: 5px;
+      }
+      .singleEventDiv {
+        border: 0px solid red;
+        padding: 10px;
+        width: 95%;
+        border-radius: 20px;
+        background-color: #4ecdc4;
+        margin: 5px;
+      }
+    </style>
+    <script>
+      function addNewEvent() {
+        //read the values
+        let title = document.getElementById("eventTitle").value;
+        let desc = document.getElementById("eventDesc").value;
+        let date = document.getElementById("eventDate").value;
+        let bgColor = document.getElementById("eventBGColor").value;
+        let textColor = document.getElementById("eventTextColor").value;
+
+        let container = document.getElementsByClassName("eventCollectionDiv");
+        let newDiv = document.createElement("div");
+        newDiv.setAttribute("class", "singleEventDiv");
+        let titleH6 = document.createElement("h6");
+        titleH6.setAttribute("class", "title");
+        titleH6.innerHTML = title + ": [" + date + "]";
+        newDiv.appendChild(titleH6);
+
+        let descP = document.createElement("p");
+        descP.innerHTML = desc;
+        newDiv.appendChild(descP);
+
+        newDiv.style.backgroundColor = bgColor;
+        newDiv.style.color = textColor;
+        container[0].appendChild(newDiv);
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="createEventDiv">
+        <h6 class="header">Add New Event</h6>
+        <p>
+          <input
+            type="text"
+            class="input"
+            id="eventTitle"
+            placeholder="Enter event title"
+          />
+        </p>
+        <p>
+          <textarea
+            id="eventDesc"
+            cols="30"
+            rows="3"
+            class="input"
+            placeholder="Enter event description"
+          ></textarea>
+        </p>
+        <p><input type="date" id="eventDate" class="input" /></p>
+        <p>
+          <input
+            type="text"
+            class="halfInput"
+            id="eventBGColor"
+            placeholder="BG Color"
+          />
+          <input
+            type="text"
+            class="halfInput"
+            id="eventTextColor"
+            placeholder="Text Color"
+          />
+        </p>
+        <p><button class="input" onclick="addNewEvent()">Save</button></p>
+      </div>
+      <div class="eventCollectionDiv">
+        <div class="singleEventDiv">
+          <h6 class="title">Makeup Exam: [Date: 01/22/2022]</h6>
+          <p>There will be a makeup exam for <b>HTML/CSS and JavaScript</b>.</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
